@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Soccer goal.obj-72f5ce2a81a4c2b6da251e6f56c43701.mesh"
+
+[deps]
+
+files=[ "res://.import/Soccer goal.obj-72f5ce2a81a4c2b6da251e6f56c43701.mesh" ]
+
+source_file="res://assets/Soccer goal.obj"
+dest_files=[ "res://.import/Soccer goal.obj-72f5ce2a81a4c2b6da251e6f56c43701.mesh", "res://.import/Soccer goal.obj-72f5ce2a81a4c2b6da251e6f56c43701.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,140 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/simple-grass/grass_mat.material" type="Material" id=1]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/bola.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Control.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Goal.gd" type="Script" id=6]
+[ext_resource path="res://scripts/Goal2.gd" type="Script" id=7]
+[ext_resource path="res://assets/simple-grass/Grass.tscn" type="PackedScene" id=8]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 7.1018, 2.11058, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 3, 15, 2 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 41.7681, 1, 20.881 )
+
+[sub_resource type="CubeMesh" id=4]
+material = ExtResource( 1 )
+size = Vector3( 80, 2, 45 )
+
+[node name="fase" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.0202202, -0.883466, 0.468058, 0.112665, 0.467185, 0.876952, -0.993427, 0.0350016, 0.108982, 27.791, 27.0237, 10.2636 )
+light_color = Color( 0.788235, 0.827451, 0.0666667, 1 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5916, 13.0982, 1.02629 )
+player = "player 1"
+left_input = "ui_left"
+right_input = "ui_right"
+up_input = "ui_up"
+down_input = "ui_down"
+run_input = "ui_run"
+
+[node name="Player2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6046, 10.3917, -0.0897503 )
+player = "player 2"
+left_input = "esquerda_2"
+right_input = "direita_2"
+up_input = "cima_2"
+down_input = "baixo_2"
+run_input = "corre_2"
+
+[node name="wall2" type="StaticBody" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 2.19598, 0, -1, 0, -4.37114e-08, 37.528, 0.562037, 0.781231 )
+
+[node name="CollisionShape" type="CollisionShape" parent="wall2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="wall2"]
+transform = Transform( 4.73278, 0, -3.64206e-08, 0, 0.294757, 0, -1.03344e-06, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="wall2"]
+transform = Transform( 4.73278, 0, -3.64207e-08, 0, 0.294757, 0, -1.03344e-06, 0, 1, 3.45707e-06, 0, -75.1593 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="wall3" type="StaticBody" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 2.19598, 0, -1, 0, -4.37114e-08, -37.7124, 5.70244, 7.5585 )
+
+[node name="CollisionShape" type="CollisionShape" parent="wall3"]
+transform = Transform( 1, 0, -3.90799e-14, 0, 1, 0, 3.90799e-14, 0, 1, 6.75008, -2.28515, 0.00256348 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.650787, 0.75926, 0, -0.75926, 0.650787, -5.98384, 37.9859, 45.5866 )
+
+[node name="Ball" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68755, 9.75017, -0.0545874 )
+mass = 0.14
+gravity_scale = 8.85
+linear_damp = 0.9
+
+[node name="Control" type="Control" parent="."]
+margin_left = -1.05945
+margin_right = 1022.94
+margin_bottom = 600.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 492.083
+margin_top = 10.0
+margin_right = 524.083
+margin_bottom = 27.0
+text = "X "
+align = 1
+
+[node name="p1" type="Label" parent="Control"]
+margin_left = 464.892
+margin_top = 9.47027
+margin_right = 483.892
+margin_bottom = 23.4703
+text = "P1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p2" type="Label" parent="Control"]
+margin_left = 528.768
+margin_top = 9.0
+margin_right = 551.768
+margin_bottom = 23.0
+text = "P2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gol1" parent="." instance=ExtResource( 2 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -35.982, 0, 5.48768 )
+script = ExtResource( 6 )
+
+[node name="gol2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 36.1696, 0, -2.7464 )
+script = ExtResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.27911 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Grass" parent="StaticBody/MeshInstance" instance=ExtResource( 8 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -10.7565, -2.95051, 17.1189 )
+[connection signal="body_entered" from="gol1" to="gol1" method="_on_gol1_body_entered"]
+[connection signal="body_entered" from="gol2" to="gol2" method="_on_gol2_body_entered"]
